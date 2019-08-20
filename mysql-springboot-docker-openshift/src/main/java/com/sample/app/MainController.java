@@ -20,16 +20,22 @@ public class MainController {
 	private SystemRepository systemRepository;
 
 	@GetMapping(path="/add") // Map ONLY GET Requests
-	public @ResponseBody String addNewUser (@RequestParam String name) {
-		// @ResponseBody means the returned String is the response, not a view name
-		// @RequestParam means it is a parameter from the GET or POST request
+        public @ResponseBody String addNewUser (@RequestParam(value="fname",required=false) String fname,@RequestParam(value="lname",required=false) String lname,@RequestParam(value="age",required=false) String age) {
+                // @ResponseBody means the returned String is the response, not a view name
+                // @RequestParam means it is a parameter from the GET or POST request
 
-		System n = new System();
-		n.setName(name);
-		n.setLastaudit(new Date());
-		systemRepository.save(n);
-		return "Saved";
-	}
+                System n = new System();
+
+                n.setlName(lname);
+
+                n.setfName(fname);
+
+                n.setAge(age);
+
+                systemRepository.save(n);
+              //  System.out.println("Hello World all",name);
+                return "Saved received the name "+fname+" "+lname+" "+age;
+        }
 
 	@GetMapping(path="/all")
 	public @ResponseBody Iterable<System> getAllUsers() {
