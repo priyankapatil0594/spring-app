@@ -1,6 +1,7 @@
-DROP TABLE IF EXISTS system;
-CREATE TABLE system (
+DROP TABLE IF EXISTS employee;
+CREATE TABLE employee (
   id INT NOT NULL AUTO_INCREMENT,
-  name VARCHAR(100) NOT NULL,
-  lastaudit DATE NOT NULL,
+  fname VARCHAR(100),
+  lname VARCHAR(100),
+  age VARCHAR(10),
   PRIMARY KEY (id));
